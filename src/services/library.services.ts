@@ -21,5 +21,13 @@ export class BookService {
         }
         return book;
     }
+    updateBook(id: number, bookData: Partial<Book>): Book {
+        const book = this.bookRepository.findById(id);
+        if (!book) {
+            throw new Error("Book not found");
+        }
+        Object.assign(book, bookData);
+        return book;
+    }
 }
 

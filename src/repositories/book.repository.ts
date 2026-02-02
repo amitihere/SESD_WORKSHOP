@@ -19,5 +19,13 @@ export class BookRepository {
     findById(id: number): Book | undefined {
         return this.books.find(book => book.id === id);
     }
+    update(id: number, bookData: Partial<Book>): Book {
+        const book = this.books.find(book => book.id === id);
+        if (!book) {
+            throw new Error("Book not found");
+        }
+        Object.assign(book, bookData);
+        return book;
+    }
 }
 
