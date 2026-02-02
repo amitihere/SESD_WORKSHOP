@@ -12,5 +12,7 @@ export class BookRoutes {
     private initializeRoutes(): void {
         this.router.post('/', this.bookController.createBook);
         this.router.get('/', this.bookController.getAllBooks);
+        this.router.get('/:id', this.bookController.getBookById);
+        
     }
 }

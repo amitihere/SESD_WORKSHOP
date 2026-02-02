@@ -21,4 +21,12 @@ export class BookController {
             res.status(500).json({ error: (error as Error).message });
         }
     };
+    getBookById = (req: Request, res: Response): void => {
+        try {
+            const book = this.bookService.getBookById(Number(req.params.id));
+            res.status(200).json(book);
+        } catch (error) {
+            res.status(404).json({ error: (error as Error).message });
+        }
+    };
 }

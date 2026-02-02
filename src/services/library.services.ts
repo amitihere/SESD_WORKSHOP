@@ -14,5 +14,12 @@ export class BookService {
     getAllBooks(): Book[] {
         return this.bookRepository.findAll();
     }
+    getBookById(id: number): Book {
+        const book = this.bookRepository.findById(id);
+        if (!book) {
+            throw new Error("Book not found");
+        }
+        return book;
+    }
 }
 

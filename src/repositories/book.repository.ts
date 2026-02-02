@@ -16,5 +16,8 @@ export class BookRepository {
     findAll(): Book[] {
         return this.books;
     }
+    findById(id: number): Book | undefined {
+        return this.books.find(book => book.id === id);
+    }
 }
 
