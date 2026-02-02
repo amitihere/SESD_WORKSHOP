@@ -1,0 +1,18 @@
+import { Book } from "../models/book.model";
+import { BookRepository } from "../repositories/book.repository";
+
+export class BookService {
+    constructor(private bookRepository: BookRepository) { }
+
+    createBook(bookData: Omit<Book, 'id'>): Book {
+        if (!bookData.title || !bookData.author || !bookData.isbn) {
+            throw new Error("Title, author, and ISBN are required");
+        }
+        return this.bookRepository.create(bookData);
+    }
+
+    getAllBooks(): Book[] {
+        return this.bookRepository.findAll();
+    }
+}
+
