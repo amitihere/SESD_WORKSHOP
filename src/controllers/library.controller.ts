@@ -37,4 +37,12 @@ export class BookController {
             res.status(404).json({ error: (error as Error).message });
         }
     };
+    deleteBook = (req: Request, res: Response): void => {
+        try {
+            const book = this.bookService.deleteBook(Number(req.params.id));
+            res.status(200).json(book);
+        } catch (error) {
+            res.status(404).json({ error: (error as Error).message });
+        }
+    };  
 }

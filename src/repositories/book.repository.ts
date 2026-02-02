@@ -27,5 +27,12 @@ export class BookRepository {
         Object.assign(book, bookData);
         return book;
     }
+    delete(id: number): void {
+        const book = this.books.find(book => book.id === id);
+        if (!book) {
+            throw new Error("Book not found");
+        }
+        this.books = this.books.filter(book => book.id !== id);
+    }
 }
 

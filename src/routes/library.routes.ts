@@ -14,7 +14,7 @@ export class BookRoutes {
         this.router.get('/', this.bookController.getAllBooks);
         this.router.get('/:id', this.bookController.getBookById);
         this.router.put('/:id', this.bookController.updateBook);
-        
+        this.router.delete('/:id', this.bookController.deleteBook);
         
     }
 }

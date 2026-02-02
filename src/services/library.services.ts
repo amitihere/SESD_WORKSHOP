@@ -29,5 +29,13 @@ export class BookService {
         Object.assign(book, bookData);
         return book;
     }
+    deleteBook(id: number): Book {
+        const book = this.bookRepository.findById(id);
+        if (!book) {
+            throw new Error("Book not found");
+        }
+        this.bookRepository.delete(id);
+        return book;
+    }
 }
 
